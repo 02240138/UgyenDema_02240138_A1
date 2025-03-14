@@ -4,7 +4,7 @@ import random
 # Function to play "Guess a Number"
 def guess():
     # Generate a random number between 1 and 100
-    number = random.randint(1, 100)
+    number = random.randint(15, 50)
     guess = 0  # Initialize the guess variable
 
     # Keep asking the user for guesses until the guess is correct
