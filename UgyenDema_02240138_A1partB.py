@@ -1,10 +1,10 @@
-# Import the random module for generating random numbers
+# Importing the random module for generating random numbers
 import random
 
 # Function to play "Guess a Number"
 def guess():
-    # Generate a random number between 1 and 100
-    number = random.randint(15, 50)
+    # Generate a random number between 1 and 50
+    number = random.randint(1, 50)
     guess = 0  # Initialize the guess variable
 
     # Keep asking the user for guesses until the guess is correct
@@ -29,7 +29,7 @@ def rock_paper_scissors():
         
         # Keep asking the player for a valid move until they provide one
         while player not in options:
-            player = input("Choose (rock, paper, scissors): ").lower()  # Convert player input to lowercase
+            player = input("Choose (rock, paper, scissors): ").lower() # Ask the player for their move
 
         print(f"Player: {player}")
         print(f"Computer: {computer}")
