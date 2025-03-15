@@ -14,15 +14,15 @@ def prime_sum(start, end):
 def convert_length(value, direction):
     # Convert length between meters and feet.
     if direction == 'M':
-        return round(value * 3.28084, 2)  # Meters to feet
+        return round(value * 3.28084, 2)  #Meters to feet
     elif direction == 'F':
-        return round(value / 3.28084, 2)  # Feet to meters
+        return round(value / 3.28084, 2)  #Feet to meters
     else:
-        return "Invalid direction"
+        return "Invalid"
 
 def count_consonants(text):
     # Count the number of consonants in a given string.
-    vowels = "aeiouAEIOU"
+    vowels = "aeiou"
     return sum(1 for char in text if char.isalpha() and char not in vowels)
 
 def find_min_max(numbers):
@@ -30,26 +30,38 @@ def find_min_max(numbers):
     return min(numbers), max(numbers)
 
 def is_palindrome(text):
-    # Check if a given string is a palindrome (ignoring case and spaces).
+    # Check if a string is a palindrome.
     cleaned_text = ''.join(text.lower().split())
     return cleaned_text == cleaned_text[::-1]
 
+def word_counter(text):
+    # Count the number of words in a given string.
+    try:
+        with open(text, 'r') as file:
+            text = file.read().lower()
+    except FileNotFoundError:
+        return "File not found."
+    words_to_count = ["the", "was", "and"] 
+    counts = {word: text.count(word) for word in words_to_count}
+    return counts       
+
 def main():
     while True:
-        print("\nSelect a function (1-5):")
-        print("1. Calculate the sum of prime numbers")
-        print("2. Convert length units")
-        print("3. Count consonants in a string")
-        print("4. Find min and max in a list of numbers")
-        print("5. Check if a string is a palindrome")
-        print("6. Exit")
+        print("\nSelect a function (1-7):")
+        print("1. Calculating the sum of prime numbers")
+        print("2. Conversion of the length units")
+        print("3. Counting of the consonants in a string")
+        print("4. Finding min and max in a list of numbers")
+        print("5. to Check if a string is a palindrome")
+        print("6. count the number of words in a file")
+        print("7. Exit")
 
         choice = input(" your choice: ")
 
         if choice == '1':
             start = int(input("Enter starting of range: "))
             end = int(input("Enter ending of range: "))
-            print(f"Sum of prime numbers: {prime_sum(start, end)}") # type: ignore
+            print(f"Calculating the sum of prime numbers: {prime_sum(start, end)}") # type: ignore
 
         elif choice == '2':
             value = float(input("Enter numeric value: "))
@@ -70,7 +82,12 @@ def main():
             print(f"Palindrome: {is_palindrome(text)}")
 
         elif choice == '6':
-            print("Exiting.")
+            text = input("Enter the file name: ")
+            print(word_counter(text))
+           
+        elif choice == '7':
+            print("Exiting")
+       
             break
         else:
             print("Invalid! Please select a valid option.")
